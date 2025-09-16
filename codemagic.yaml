@@ -1,12 +1,14 @@
 workflows:
   android-workflow:
-    name: Android Build
+    name: Android Workflow
     max_build_duration: 60
     environment:
-      android:
-        image: android-stable
+      flutter: stable
+      java: 17
     scripts:
+      - name: Get dependencies
+        script: flutter pub get
       - name: Build APK
-        script: ./gradlew assembleDebug
+        script: flutter build apk --release
     artifacts:
-      - app/build/outputs/**/*.apk
+      - build/app/outputs/flutter-apk/app-release.apk

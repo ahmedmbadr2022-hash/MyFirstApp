@@ -3,7 +3,8 @@ workflows:
     name: Android Build
     max_build_duration: 60
     environment:
-      sdk: "30"
+      android:
+        image: android-stable
     scripts:
       - name: Build APK
         script: ./gradlew assembleDebug
